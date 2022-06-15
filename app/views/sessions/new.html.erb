@@ -1,0 +1,33 @@
+
+<html>
+<head>
+
+</head>
+<body>
+<div class="container">
+	<div class="screen">
+		<div class="screen__content">
+<div class="login">
+<br />
+<h2 align="center">Log in As Admin</h2><br />
+<div class="container" style="border:1px solid black">
+    <%= form_with(scope: :session, url: login_path) do |f| %>
+
+  <%= f.email_field :email, class: "form-control" ,placeholder: "enter your mail" %>
+  <%= f.text_field :password, class: "form-control",placeholder: "enter your password" %>
+</div>
+ </div>
+ <br />
+<div class="form-group">
+  <%= f.submit "Log in", class: "btn btn-primary" %>
+</div>
+ </div>
+<% end %>			
+			
+</div>
+
+</body>
+
+</html>
+
+

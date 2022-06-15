@@ -1,0 +1,57 @@
+<div class="container">
+<%= button_to 'sign Out', destroy_user_session_path, method: :delete, class:"btn btn-secondary me-md-4" %>
+<br />
+<div class="container rounded" style="border:2px solid black">
+
+<div id="<%= dom_id giftcard %>">
+  <p>
+    <strong>Order Id : </strong>
+    <%= giftcard.id %>
+  </p>
+    <p>
+    <strong>User Id : </strong>
+    <%= giftcard.user_id %>
+  </p>
+  <p>
+    <strong>First name : </strong>
+    <%= giftcard.first_name %>
+  </p>
+
+  <p>
+    <strong>Last name : </strong>
+    <%= giftcard.last_name %>
+  </p>
+
+  <p>
+    <strong>Gift card value : </strong>
+    <%= giftcard.gift_card_value %>
+  </p>
+
+  <p>
+    <strong>Commission : </strong>
+    <%= giftcard.commission %>
+  </p>
+
+  <p>
+    <strong>Mob no : </strong>
+    <%= giftcard.mob_no %>
+  </p>
+
+  <p>
+    <strong>Address : </strong>
+    <%= giftcard.address %>
+  </p>
+
+  <p>
+    <strong>Order date : </strong>
+    <%= giftcard.order_date %>
+  </p>
+  <p>
+    <strong>Status : </strong>
+    <%= giftcard.status %>
+  </p>
+
+
+</div>
+</div>
+</div>

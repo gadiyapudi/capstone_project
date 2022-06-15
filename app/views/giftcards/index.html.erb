@@ -1,0 +1,75 @@
+<p style="color: black"><%= notice %></p>
+<br />
+<div class="container">
+<%= button_to 'sign Out', destroy_user_session_path, method: :delete %>
+</div>
+<h1 align="center">List Of Giftcards</h1>
+<br/>
+<div class="container rounded" style="border:2px solid black">
+<table class="table table-striped table-bordered table-hover table-primary">
+<thead class="btn-primary">
+<tr>
+<th>Order Id</th>
+<th>User Id</th>
+<th>Name</th>
+<th>Ordered Date</th>
+<th>Address</th>
+<th>Phone Number</th>
+<th>Gift Card Value</th>
+<th>Commission(10%)</th>
+<th>Delievry Status</th>
+<th>Mark As</th>
+</tr>
+</thead>
+<tbody>
+<% if user_signed_in? %>
+<% @giftcards.each do |giftcard| %>
+<% if giftcard.user == current_user %>
+    <tr>
+    <td><%=giftcard.id%></td>
+    <td><%=giftcard.user_id%></td>
+    <td><%=giftcard.first_name %>
+    <%=giftcard.last_name %>
+    </td>
+    <td><%=giftcard.order_date%></td>
+   <td><%=giftcard.address%></td>
+   <td><%=giftcard.mob_no%></td>
+   <td><strong>INR. </strong><%=giftcard.gift_card_value%></td>
+    <td><strong>INR. </strong><%=giftcard.commission%></td>
+    <td><%=giftcard.status%></td>
+    <td><%= link_to "Show", giftcard , class:"btn btn-secondary"%>
+    
+    <%=link_to 'Edit', edit_giftcard_path(giftcard), class:"btn btn-secondary"%></td>
+    </tr>
+
+    <%end%>
+  <% end %>
+  <%else%>
+  <% @giftcards.each do |giftcard| %>
+    <tr>
+    <td><%=giftcard.id%></td>
+    <td><%=giftcard.user_id%></td>
+    <td><%=giftcard.first_name %>
+    <%=giftcard.last_name %>
+    </td>
+    <td><%=giftcard.order_date%></td>
+   <td><%=giftcard.address%></td>
+   <td><%=giftcard.mob_no%></td>
+   <td><strong>INR. </strong><%=giftcard.gift_card_value%></td>
+    <td><strong>INR. </strong><%=giftcard.commission%></td>
+    <td><%=giftcard.status%></td>
+    <td><%=link_to 'Status', edit_giftcard_path(giftcard), class:"btn btn-secondary"%></td>
+    </tr>
+    <%end%>
+  <% end %>
+
+
+</tbody>
+</table>
+</div>
+<br />
+<div class="container">
+<%if user_signed_in?%>
+<%= link_to "New giftcard", new_giftcard_path, class:"btn btn-secondary" %>
+<%end%>
+</div>

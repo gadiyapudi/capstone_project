@@ -1,0 +1,57 @@
+ <html>
+ <body>
+
+ <% if user_signed_in? %>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+  <%= link_to 'Giftcard', root_path, class:"navbar-brand" %>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+     
+      <li class="nav-item">
+        <%= link_to 'New Order', new_giftcard_path, class:"nav-link" %>
+          
+        </li>
+        <li class="nav-item">
+        <%= link_to 'Order History', giftcards_path, class:"nav-link" %>
+          
+        </li>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                <li class="nav-item">
+        <%= button_to 'sign Out', destroy_user_session_path, method: :delete, class:"btn btn-dark " %>
+          
+        </li>
+        </div>
+        </ul>
+    </div>
+  </div>
+</nav>
+<br/>
+<br/>
+<div class="container rounded" style="border:1px solid black">
+
+<h1 style="color:black;text-align:center;">Welcome to Giftcard Page</h1>
+        <% else %>
+<br/>
+<br/>
+
+<h1 style="color:black;text-align:center;">Welcome to Giftcard Page</h1>
+<br/>
+<br/>
+<div class="container rounded" style="border:1px solid black">
+
+        <div class="container">
+        <div class="center">
+        <h1 style="color:black;text-align:center;">Log In As</h1>
+          <br />
+          <div style="color:black;text-align:center;">
+          <%= link_to 'Admin', login_path, class:"btn btn-secondary" %>
+          <%= link_to 'User', new_user_session_path, class:"btn btn-secondary" %>
+          </div>
+      </div>
+      </div>
+       <% end %> 
+       </body>
+       </html>
+      
+</div>

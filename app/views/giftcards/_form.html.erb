@@ -1,0 +1,120 @@
+<html>
+<body>
+<div class="container">
+<%= button_to 'sign Out', destroy_user_session_path, method: :delete, class:"btn btn-secondary me-md-4" %>
+</div>
+<br/>
+<%if user_signed_in?%>
+<%= form_with(model: giftcard) do |form| %>
+
+  <% if giftcard.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(giftcard.errors.count, "error") %> prohibited this giftcard from being saved:</h2>
+
+      <ul>
+        <% giftcard.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="container rounded" style="border:1px solid black">
+
+  <div class="row">
+  <div class="col-xs-12 col-sm-6">
+     <div class="p-3">
+    <%= form.label :first_name, style: "display: block" %>
+    <%= form.text_field :first_name, class:"form-control"%>
+  </div>
+
+  <div class="p-3">
+    <%= form.label :last_name, style: "display: block" %>
+    <%= form.text_field :last_name, class:"form-control" %>
+  </div>
+  <div class="p-3">
+    <%= form.label :gift_card_value, style: "display: block" %>
+    <%= form.text_field :gift_card_value, class:"form-control", id: :gift_val, onchange: "fun()"%>
+  </div>
+
+  <div class="p-3"> 
+    <%= form.text_field :commission, class:"form-control", id: :res ,type: :hidden%>
+  </div>
+  </div>
+  <div class="col-xs-12 col-sm-6">
+     <div class="p-3">
+    <%= form.label :mob_no, style: "display: block" %>
+    <%= form.text_field :mob_no, class:"form-control" %>
+  </div>
+
+  <div class="p-3">
+    <%= form.label :address, style: "display: block" %>
+    <%= form.text_field :address, class:"form-control" %>
+  </div>
+
+  <div class="p-3">
+    <%= form.label :order_date, style: "display: block" , class: "col-sm-2 col-form-label"%>
+    <%= form.date_field :order_date, class:"form-control" %>
+  </div>
+  <div class="p-3">
+    <%= form.number_field :user_id, id: :giftcard_user_id, class:"form-control", value: current_user.id, type: :hidden %>
+  </div>
+  </div>
+</div>
+</div>
+<br/>
+<div class="container">
+  <div class="action form-group">
+    <%= form.submit class:"btn btn-secondary " %>
+  </div>
+  </div>
+<%end%>
+
+  <%else%>
+  <%= form_with(model: giftcard) do |form| %>
+
+  <% if giftcard.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(giftcard.errors.count, "error") %> prohibited this giftcard from being saved:</h2>
+
+      <ul>
+        <% giftcard.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="container rounded" style="border:1px solid black">
+
+ <div class="p-3">
+    <%= form.label :status, style: "display: block" %>
+    <%= form.text_field :status, class:"form-control" %>
+  </div>
+  </div>
+  <br/>
+  <div class="container">
+    <%= form.submit class:"btn btn-secondary " %>
+  </div>
+  <%end%>
+<% end %>
+
+
+ </form>     
+</body>
+<script>
+function fun() {
+  num1 = document.getElementById("gift_val").value;
+  if(parseInt(num1)<10)
+  result=0;
+  else
+  result = parseInt(num1) * (0.1);
+
+  document.getElementById("res").value=result;
+  
+}
+n =  new Date();
+y = n.getFullYear();
+m = n.getMonth() + 1;
+d = n.getDate();
+document.getElementById("date").innerHTML = "Date :- "+ d + "/" + m + "/" + y;
+</script>
+</html>
